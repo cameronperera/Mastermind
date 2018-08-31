@@ -7,6 +7,8 @@ import System.Random
 
 spec_main :: Spec
 spec_main = describe "Prelude.head" $ do
-    it "returns the first element of a list" $
-      head [23 ..] `shouldBe` (23 :: Int)
+    it "returns the first element of a list" pending -- $
+      -- head [23 ..] `shouldBe` (23 :: Int)
+
+    it "is a placeholder test" pending
   
