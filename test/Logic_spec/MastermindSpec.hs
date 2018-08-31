@@ -39,7 +39,7 @@ spec_hspecSuite = describe "Mastermind logic tests" $ do
       checkGuess defaultCode (reverse defaultCode) `shouldBe` [WHITE, WHITE, WHITE, WHITE]
 
     it "should return one Black & one White response for one correct color in correct spot & one correct color in wrong spot" $ --pending
-      checkGuess defaultCode [White, Red, Black, Blue] `shouldBe` [BLACK, WHITE, EMPTY, EMPTY]
+      checkGuess defaultCode [White, Blue, Black, Blue] `shouldBe` [BLACK, WHITE, EMPTY, EMPTY]
 
     it "should return list of 2 matching Pegs between two list of Pegs" $
       findAllWhites defaultCode [Red, Yellow, Green, Blue] `shouldBe` [Red, Yellow]

@@ -25,6 +25,7 @@ checkGuess :: [Pegs] -> [Pegs] -> [Responses]
 checkGuess secretCode guess = 
   let blacks = length $ findAllBlacks secretCode guess
       whites = length $ findAllWhites secretCode guess
+      totalLength = blacks + (whites - blacks)
   in replicate blacks BLACK ++ replicate (whites - blacks) WHITE
   -- replicate (length findAllBlacks secretCode guess) BLACK ++ replicate ((length findAllWhites - length findAllBlacks) secretCode guess) WHITE
   -- findAllBlacks (head secretCode) (head guess)
