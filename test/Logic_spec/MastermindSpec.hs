@@ -24,7 +24,7 @@ spec_hspecSuite = describe "Mastermind logic tests" $ do
       randomizeCode `shouldNotBe` defaultCode
 
     it "should return all Black response for correct guess" $
-      checkGuess defaultCode defaultCode `shouldBe` [BLACK, BLACK, BLACK]
+      checkGuess defaultCode defaultCode `shouldBe` [BLACK, BLACK, BLACK, BLACK]
 
     it "should return one Black response for one correct color in correct spot" $ --pending
       checkGuess defaultCode [White, Green, Green, Green] `shouldBe` [BLACK, EMPTY, EMPTY, EMPTY]
