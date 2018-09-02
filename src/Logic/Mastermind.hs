@@ -25,11 +25,9 @@ findAllBlacks secretCode guess = map fst . filter (\(x,y) -> x == y) $ zip secre
 findAllWhites :: [Pegs] -> [Pegs] -> [Pegs]
 findAllWhites secretCode guess = filter (`elem` secretCode) guess
 
-checkGuess :: [Pegs] -> [Pegs] -> [Responses]
-checkGuess secretCode guess = 
-  let blacks = length $ findAllBlacks secretCode guess
-      whites = length $ findAllWhites secretCode guess
-      totalLength = blacks + (whites - blacks)
+getResponse :: Int -> Int -> [Responses]
+getResponse blacks whites = 
+  let totalLength = blacks + (whites - blacks)
   in 
     replicate blacks BLACK 
     ++ replicate (whites - blacks) WHITE
