@@ -13,20 +13,23 @@ spec_utility = describe "Utility tests" $ do
     it "should convert user input to list of Pegs" $ 
       convertGuessToPegs ["black", "white", "red", "yellow"] `shouldBe` [Black, White, Red, Yellow]
 
-    it "should end the game after 20 guess" $ 
-      isNoMoreGuess 20 `shouldBe` True
-
-    it "should not end the game if guesses are less than 20" $ 
-      isNoMoreGuess 2 `shouldBe` False
-
     it "should print the Welcome Message" $
       welcomeMessage `shouldBe` "Welcome to MasterMind!\nA secret code has been generated\nCan you guess it?\nYou only get 20 guesses!"
 
-    it "should print example guess" $
+    it "should show example guess" $
       exampleGuess `shouldBe` "Guess example: \"white black red blue\""
 
-    it "should print the startMessage" $
+    it "should show the startMessage" $
       startMessage `shouldBe` "Would you like to play MasterMind?\n[y]es or [n]o: "
+
+    it "should show the guessMessage" $
+      guessMessage `shouldBe` "Make your guess: "
+
+    it "should show the winMessage" $
+      winMessage `shouldBe` "You win!!!"
+
+    it "should show the failMessage" $
+      failMessage `shouldBe` "Better luck next time!"
 
     it "should return a list of guesses from string" $
       convertUserGuessToList "black white red blue" `shouldBe` ["black", "white", "red", "blue"]

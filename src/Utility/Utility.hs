@@ -18,9 +18,6 @@ convertStringToPeg "blue" = Blue
 convertGuessToPegs :: [String] -> [Pegs]
 convertGuessToPegs = map convertStringToPeg
 
-isNoMoreGuess :: Int -> Bool
-isNoMoreGuess numberOfGuesses = numberOfGuesses >= 20
-
 welcomeMessage :: String
 welcomeMessage = "Welcome to MasterMind!\nA secret code has been generated\nCan you guess it?\nYou only get 20 guesses!"
 

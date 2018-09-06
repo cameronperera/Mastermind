@@ -9,24 +9,6 @@ import System.Process
 import Control.Concurrent
 import Data.Time.Clock
 
-gameLoop :: [Pegs] -> Int -> IO ()
-gameLoop secretCode counter = do
-  putStrLn "Make your guess: "
-  userGuess <- getLine
-  let guess = convertGuessToPegs $ convertUserGuessToList userGuess
-  let newCounter = counter + 1
-  if secretCode == guess
-  then do
-    putStrLn "win"
-    exitSuccess
-  else if counter >= 19
-    then do
-      putStrLn "you lose"
-      exitSuccess
-    else do
-      let response = engine secretCode guess
-      putStrLn response
-      gameLoop secretCode newCounter
 
 main :: IO ()
 main = do
@@ -43,5 +25,5 @@ main = do
         print secretCode
         let counter = 0
         threadDelay 1000000
-        -- system "cls"
+        system "cls"
         gameLoop secretCode counter

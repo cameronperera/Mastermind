@@ -13,9 +13,6 @@ randomIndex seed = randomR (0,5) (seed)
 makeSeed :: Int -> Int -> StdGen
 makeSeed currentTime num = mkStdGen $ currentTime * num
 
-setUpGame :: [Pegs]
-setUpGame = [White, Black, Red, Yellow]
-
 selectPegFromIndex :: Int -> Pegs
 selectPegFromIndex index = toEnum index
 

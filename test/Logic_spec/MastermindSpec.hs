@@ -4,6 +4,7 @@ import Logic.Mastermind
 import Test.Tasty
 import Test.Tasty.Hspec
 import Control.Exception (evaluate)
+import System.Random
 
 spec_Logic :: Spec
 spec_Logic = describe "Mastermind logic tests" $ do
@@ -16,8 +17,11 @@ spec_Logic = describe "Mastermind logic tests" $ do
     it "should be a list of Pegs" $
       [ White, Black, Red ] `shouldBe` ([ White, Black, Red ] :: [Pegs])
 
-    it "should return a list of (default) peg colors" $
-      setUpGame `shouldBe` defaultCode
+    it "should return a random Int between 0-5 - high end check" $
+      fst (randomIndex (mkStdGen 1)) `shouldSatisfy` (<= 5)
+
+    it "should return a random Int between 0-5 - low end check" $
+      fst (randomIndex (mkStdGen 1)) `shouldSatisfy` (>= 0)
 
     it "should randomize secret" $
       randomizeCode 42 `shouldNotBe` defaultCode
