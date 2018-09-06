@@ -6,9 +6,7 @@ import Control.Exception (evaluate)
 import System.Random
 
 spec_main :: Spec
-spec_main = describe "Prelude.head" $ do
-    it "returns the first element of a list" pending -- $
-      -- head [23 ..] `shouldBe` (23 :: Int)
-
+spec_main = describe "Main tests" $ do
+    it "is a placeholder test" pending 
     it "is a placeholder test" pending
   
