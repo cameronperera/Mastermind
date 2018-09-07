@@ -7,12 +7,15 @@ import System.Exit (exitSuccess)
 engine :: [Pegs] -> [Pegs] -> String
 engine secretCode guess = do
           let numOfBlackPegs = findAllBlacks secretCode guess
-          let numOfWhitePegs = findAllWhites secretCode guess
+          let refinedSecretCode = removeBLACKMatches guess secretCode
+          let refinedGuess = removeBLACKMatches secretCode guess
+          let numOfWhitePegs = findAllWhites refinedSecretCode refinedGuess
           let response = getResponse (length numOfBlackPegs) (length numOfWhitePegs)
           convertResponsesListToString response
 
 gameLoop :: [Pegs] -> Int -> IO ()
 gameLoop secretCode counter = do
+  putStrLn "Colors: white, black, red, yellow, green, blue"
   putStrLn "Make your guess: "
   userGuess <- getLine
   let guess = convertGuessToPegs $ convertUserGuessToList userGuess

@@ -1,3 +1,4 @@
+{-# LANGUAGE FlexibleContexts #-}
 module Logic.Mastermind where
 
 import Control.Exception (evaluate)
@@ -31,13 +32,16 @@ randomizeCode currentTime =
 findAllBlacks :: [Pegs] -> [Pegs] -> [Pegs]
 findAllBlacks secretCode guess = map fst . filter (\(x,y) -> x == y) $ zip secretCode guess
 
+removeBLACKMatches :: [Pegs] -> [Pegs] -> [Pegs]
+removeBLACKMatches firstList returnedList = map fst . filter (\(x,y) -> x /= y) $ zip firstList returnedList
+
 findAllWhites :: [Pegs] -> [Pegs] -> [Pegs]
 findAllWhites secretCode guess = filter (`elem` secretCode) guess
 
 getResponse :: Int -> Int -> [Responses]
 getResponse blacks whites = 
-  let totalLength = blacks + (whites - blacks)
+  let totalLength = blacks + whites
   in 
     replicate blacks BLACK 
-    ++ replicate (whites - blacks) WHITE
+    ++ replicate whites WHITE
     ++ replicate (4 - totalLength) EMPTY

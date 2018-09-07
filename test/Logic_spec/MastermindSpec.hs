@@ -27,10 +27,10 @@ spec_Logic = describe "Mastermind logic tests" $ do
       randomizeCode 42 `shouldNotBe` defaultCode
 
     it "should return all Black response for correct guess" $
-      getResponse 4 4 `shouldBe` [BLACK, BLACK, BLACK, BLACK]
+      getResponse 4 0 `shouldBe` [BLACK, BLACK, BLACK, BLACK]
 
     it "should return one Black response for one correct color in correct spot" $
-      getResponse 1 1 `shouldBe` [BLACK, EMPTY, EMPTY, EMPTY]
+      getResponse 1 0 `shouldBe` [BLACK, EMPTY, EMPTY, EMPTY]
 
     it "should return one White response for one correct color in wrong spot" $
       getResponse 0 1 `shouldBe` [WHITE, EMPTY, EMPTY, EMPTY]
@@ -42,7 +42,10 @@ spec_Logic = describe "Mastermind logic tests" $ do
       getResponse 0 4 `shouldBe` [WHITE, WHITE, WHITE, WHITE]
 
     it "should return one Black & one White response for one correct color in correct spot & one correct color in wrong spot" $
-      getResponse 1 2 `shouldBe` [BLACK, WHITE, EMPTY, EMPTY]
+      getResponse 1 1 `shouldBe` [BLACK, WHITE, EMPTY, EMPTY]
+
+    it "should return 2 BLACK responses" $
+      getResponse 2 0 `shouldBe` [BLACK, BLACK, EMPTY, EMPTY]
 
     it "should return list of 2 matching Pegs between two list of Pegs" $
       findAllWhites defaultCode [Red, Yellow, Green, Blue] `shouldBe` [Red, Yellow]
@@ -52,6 +55,18 @@ spec_Logic = describe "Mastermind logic tests" $ do
 
     it "should return list of 1 matching Peg between two list of Pegs" $
       findAllWhites defaultCode [Red, Blue, Green, Blue] `shouldBe` [Red]
+
+    it "should return a list of white matches only" $
+      findAllWhites [Blue, Red, Red, Blue] [Red] `shouldBe` [Red]
+
+    it "should remove BLACK matches from the lists - Blue White" $
+      removeBLACKMatches [Red, Red, Blue, White] [Red, Red, White, Blue] `shouldBe` [Blue, White]
+
+    it "should remove BLACK matches from the lists - Blue Blue" $
+      removeBLACKMatches [Red, Red, Blue, Blue] [Red, Red, Red, Red] `shouldBe` [Blue, Blue]
+
+    it "should return a list of black matches - 2 matches" $
+      findAllBlacks [Blue, Red, Red, Blue] [Red, Red, Red, Red] `shouldBe` [Red, Red]
 
     it "should return the items that match eachother in two list of Pegs - all match" $
       findAllBlacks defaultCode defaultCode `shouldBe` defaultCode
