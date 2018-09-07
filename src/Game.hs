@@ -6,11 +6,11 @@ import System.Exit (exitSuccess)
 
 engine :: [Pegs] -> [Pegs] -> String
 engine secretCode guess = do
-          let numOfBlackPegs = findAllBlacks secretCode guess
+          let numOfBlackPegs = length $ findAllBlacks secretCode guess
           let refinedSecretCode = removeBLACKMatches guess secretCode
           let refinedGuess = removeBLACKMatches secretCode guess
-          let numOfWhitePegs = findAllWhites refinedSecretCode refinedGuess
-          let response = getResponse (length numOfBlackPegs) (length numOfWhitePegs)
+          let numOfWhitePegs = length $ findAllWhites refinedSecretCode refinedGuess
+          let response = getResponse numOfBlackPegs numOfWhitePegs
           convertResponsesListToString response
 
 gameLoop :: [Pegs] -> Int -> IO ()
