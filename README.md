@@ -10,7 +10,7 @@ Stack is the package manager for Haskell projects (similar to npm for Node proje
 - Enter the following commands
   - Setup - stack setup
   - Build - stack build
-  - Run - stack exec mastermind-exe
+  - Run - stack exec mastermind_haskell-exe
   - Test - stack test
 
 
