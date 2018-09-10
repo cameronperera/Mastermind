@@ -22,7 +22,6 @@ main = do
         currentTime <- getCurrentTime
         let time = floor $ utctDayTime currentTime :: Int
         let secretCode = randomizeCode time
-        print secretCode
         let counter = 0
         threadDelay 1000000
         system "cls"

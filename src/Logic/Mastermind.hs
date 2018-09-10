@@ -2,6 +2,7 @@
 module Logic.Mastermind where
 
 import Control.Exception (evaluate)
+import Data.List
 import System.Random
 
 
@@ -9,7 +10,7 @@ data Pegs = White | Black | Red | Yellow | Green | Blue deriving (Eq, Ord, Show,
 data Responses = BLACK | WHITE | EMPTY deriving (Eq, Ord, Show, Read, Bounded, Enum)
 
 randomIndex :: StdGen -> (Int, StdGen)
-randomIndex seed = randomR (0,5) (seed)
+randomIndex seed = randomR (0,5) seed
 
 makeSeed :: Int -> Int -> StdGen
 makeSeed currentTime num = mkStdGen $ currentTime * num
@@ -36,7 +37,7 @@ removeBLACKMatches :: [Pegs] -> [Pegs] -> [Pegs]
 removeBLACKMatches firstList returnedList = map fst . filter (\(x,y) -> x /= y) $ zip firstList returnedList
 
 findAllWhites :: [Pegs] -> [Pegs] -> [Pegs]
-findAllWhites secretCode guess = filter (`elem` secretCode) guess
+findAllWhites secretCode guess = filter (`elem` (nub secretCode)) guess
 
 getResponse :: Int -> Int -> [Responses]
 getResponse blacks whites = 

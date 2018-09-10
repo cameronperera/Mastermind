@@ -31,4 +31,5 @@ gameLoop secretCode counter = do
     else do
       let response = engine secretCode guess
       putStrLn response
+      putStrLn ""
       gameLoop secretCode newCounter
