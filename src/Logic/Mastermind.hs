@@ -10,13 +10,13 @@ data Pegs = White | Black | Red | Yellow | Green | Blue deriving (Eq, Ord, Show,
 data Responses = BLACK | WHITE | EMPTY deriving (Eq, Ord, Show, Read, Bounded, Enum)
 
 randomIndex :: StdGen -> (Int, StdGen)
-randomIndex seed = randomR (0,5) seed
+randomIndex = randomR (0,5)
 
 makeSeed :: Int -> Int -> StdGen
 makeSeed currentTime num = mkStdGen $ currentTime * num
 
 selectPegFromIndex :: Int -> Pegs
-selectPegFromIndex index = toEnum index
+selectPegFromIndex = toEnum
 
 randomizeCode :: Int -> [Pegs]
 randomizeCode currentTime =
@@ -31,13 +31,13 @@ randomizeCode currentTime =
     , selectPegFromIndex $ fst indexFour]
 
 findAllBlacks :: [Pegs] -> [Pegs] -> [Pegs]
-findAllBlacks secretCode guess = map fst . filter (\(x,y) -> x == y) $ zip secretCode guess
+findAllBlacks secretCode guess = map fst . filter (uncurry (==)) $ zip secretCode guess
 
 removeBLACKMatches :: [Pegs] -> [Pegs] -> [Pegs]
-removeBLACKMatches firstList returnedList = map fst . filter (\(x,y) -> x /= y) $ zip firstList returnedList
+removeBLACKMatches firstList returnedList = map fst . filter (uncurry (/=)) $ zip firstList returnedList
 
 findAllWhites :: [Pegs] -> [Pegs] -> [Pegs]
-findAllWhites secretCode guess = filter (`elem` (nub secretCode)) guess
+findAllWhites secretCode = filter (`elem` nub secretCode)
 
 getResponse :: Int -> Int -> [Responses]
 getResponse blacks whites = 

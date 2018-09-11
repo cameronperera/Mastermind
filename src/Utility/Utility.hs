@@ -6,7 +6,6 @@ import Data.List
 import Data.List.Split
 import Logic.Mastermind
 
--- add toLower for this function
 convertStringToPeg :: String -> Pegs
 convertStringToPeg "white" = White
 convertStringToPeg "black" = Black
@@ -37,7 +36,7 @@ failMessage :: String
 failMessage = "Better luck next time!"
 
 convertUserGuessToList :: String -> [String]
-convertUserGuessToList guess = splitOn " " guess
+convertUserGuessToList = splitOn " "
 
 convertResponsesListToString :: [Responses] -> String
-convertResponsesListToString responses = intercalate " " (map show responses)
+convertResponsesListToString responses = unwords (map show responses)
