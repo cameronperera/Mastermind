@@ -37,7 +37,7 @@ removeBLACKMatches :: [Pegs] -> [Pegs] -> [Pegs]
 removeBLACKMatches firstList returnedList = map fst . filter (uncurry (/=)) $ zip firstList returnedList
 
 findAllWhites :: [Pegs] -> [Pegs] -> [Pegs]
-findAllWhites secretCode = filter (`elem` nub secretCode)
+findAllWhites secretCode guess = filter (`elem` nub secretCode) guess
 
 getResponse :: Int -> Int -> [Responses]
 getResponse blacks whites = 
