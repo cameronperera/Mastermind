@@ -4,7 +4,9 @@ module Utility.Utility where
 import Data.Text (toLower)
 import Data.List
 import Data.List.Split
-import Logic.Mastermind
+import CustomDataTypes.Pegs
+import CustomDataTypes.Responses
+
 
 convertStringToPeg :: String -> Pegs
 convertStringToPeg "white" = White
@@ -25,6 +27,9 @@ exampleGuess = "Guess example: \"white black red blue\""
 
 startMessage :: String
 startMessage = "Would you like to play MasterMind?\n[y]es or [n]o: "
+
+colorsReminder :: String
+colorsReminder = "Colors: white, black, red, yellow, green, blue"
 
 guessMessage :: String
 guessMessage = "Make your guess: "

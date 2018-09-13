@@ -4,10 +4,9 @@ module Logic.Mastermind where
 import Control.Exception (evaluate)
 import Data.List
 import System.Random
+import CustomDataTypes.Pegs
+import CustomDataTypes.Responses
 
-
-data Pegs = White | Black | Red | Yellow | Green | Blue deriving (Eq, Ord, Show, Read, Bounded, Enum)
-data Responses = BLACK | WHITE | EMPTY deriving (Eq, Ord, Show, Read, Bounded, Enum)
 
 randomIndex :: StdGen -> (Int, StdGen)
 randomIndex = randomR (0,5)

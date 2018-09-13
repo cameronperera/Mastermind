@@ -2,8 +2,11 @@ module Utility_spec.UtilitySpec where
 
 import Utility.Utility
 import Logic.Mastermind
+import CustomDataTypes.Pegs
+import CustomDataTypes.Responses
 import Test.Tasty
 import Test.Tasty.Hspec
+
 
 spec_utility :: Spec
 spec_utility = describe "Utility tests" $ do
@@ -21,6 +24,9 @@ spec_utility = describe "Utility tests" $ do
 
     it "should show the startMessage" $
       startMessage `shouldBe` "Would you like to play MasterMind?\n[y]es or [n]o: "
+
+    it "should show the colorsReminder" $
+      colorsReminder `shouldBe` "Colors: white, black, red, yellow, green, blue"
 
     it "should show the guessMessage" $
       guessMessage `shouldBe` "Make your guess: "

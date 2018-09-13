@@ -1,10 +1,13 @@
 module Logic_spec.MastermindSpec where
 
 import Logic.Mastermind
+import CustomDataTypes.Pegs
+import CustomDataTypes.Responses
 import Test.Tasty
 import Test.Tasty.Hspec
 import Control.Exception (evaluate)
 import System.Random
+
 
 spec_Logic :: Spec
 spec_Logic = describe "Mastermind logic tests" $ do

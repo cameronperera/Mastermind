@@ -2,8 +2,11 @@ module GameSpec where
 
 import Game
 import Logic.Mastermind
+import CustomDataTypes.Pegs
+import CustomDataTypes.Responses
 import Test.Tasty
 import Test.Tasty.Hspec
+
 
 spec_Game :: Spec
 spec_Game = describe "Game engine test" $ do

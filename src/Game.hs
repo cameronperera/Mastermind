@@ -2,7 +2,10 @@ module Game where
 
 import Logic.Mastermind
 import Utility.Utility
+import CustomDataTypes.Pegs
+import CustomDataTypes.Responses
 import System.Exit (exitSuccess)
+
 
 engine :: [Pegs] -> [Pegs] -> String
 engine secretCode guess = do
@@ -15,8 +18,8 @@ engine secretCode guess = do
 
 gameLoop :: [Pegs] -> Int -> IO ()
 gameLoop secretCode counter = do
-  putStrLn "Colors: white, black, red, yellow, green, blue"
-  putStrLn "Make your guess: "
+  putStrLn colorsReminder
+  putStrLn guessMessage
   userGuess <- getLine
   let guess = convertGuessToPegs $ convertUserGuessToList userGuess
   let newCounter = counter + 1
