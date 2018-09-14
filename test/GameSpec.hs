@@ -2,8 +2,8 @@ module GameSpec where
 
 import Game
 import Logic.Mastermind
-import CustomDataTypes.Pegs
-import CustomDataTypes.Responses
+import Models.Pegs
+import Models.Responses
 import Test.Tasty
 import Test.Tasty.Hspec
 

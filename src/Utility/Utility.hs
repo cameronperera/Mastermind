@@ -4,8 +4,8 @@ module Utility.Utility where
 import Data.Text (toLower)
 import Data.List
 import Data.List.Split
-import CustomDataTypes.Pegs
-import CustomDataTypes.Responses
+import Models.Pegs
+import Models.Responses
 
 
 convertStringToPeg :: String -> Pegs

@@ -2,8 +2,8 @@ module Game where
 
 import Logic.Mastermind
 import Utility.Utility
-import CustomDataTypes.Pegs
-import CustomDataTypes.Responses
+import Models.Pegs
+import Models.Responses
 import System.Exit (exitSuccess)
 
 

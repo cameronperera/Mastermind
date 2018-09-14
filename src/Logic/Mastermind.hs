@@ -4,8 +4,8 @@ module Logic.Mastermind where
 import Control.Exception (evaluate)
 import Data.List
 import System.Random
-import CustomDataTypes.Pegs
-import CustomDataTypes.Responses
+import Models.Pegs
+import Models.Responses
 
 
 randomIndex :: StdGen -> (Int, StdGen)

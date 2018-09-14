@@ -1,3 +1,3 @@
-module CustomDataTypes.Responses where
+module Models.Responses where
 
 data Responses = BLACK | WHITE | EMPTY deriving (Eq, Ord, Show, Read, Bounded, Enum)
